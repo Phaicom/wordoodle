@@ -18,5 +18,8 @@ export default defineConfig({
   },
   test: {
     isolate: false,
+    coverage: {
+      reporter: ['text', 'json', 'html'],
+    },
   },
 })
