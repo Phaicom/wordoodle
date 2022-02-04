@@ -1,5 +1,5 @@
 import { createWordoodleGenerator } from '@wordoodle/core'
-import { describe, expect, it, vi } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 describe('wordoodle generator', () => {
   const wordoodle = createWordoodleGenerator()
@@ -27,8 +27,23 @@ describe('wordoodle generator', () => {
   })
 
   it('can check word', () => {
-    expect(wordoodle.check('t')).toBeFalsy()
+    expect(wordoodle.check('t').isEqual).toBeFalsy()
     wordoodle.word = 'hello'
-    expect(wordoodle.check('hello')).toBeTruthy()
+    expect(wordoodle.check('hello').isEqual).toBeTruthy()
+    const checkTest1 = wordoodle.check('xexlo')
+    expect(checkTest1.isEqual).toBeFalsy()
+    expect(checkTest1.isError).toBeFalsy()
+    expect(checkTest1.location.correct).to.be.eql([1, 3, 4])
+    const checkTest2 = wordoodle.check('xeoll')
+    expect(checkTest2.isEqual).toBeFalsy()
+    expect(checkTest2.isError).toBeFalsy()
+    expect(checkTest2.location.correct).to.be.eql([1, 3])
+    expect(checkTest2.location.incorrect).to.be.eql([2, 4])
+  })
+
+  it('can store used word', () => {
+    const wordoodle2 = createWordoodleGenerator()
+    wordoodle2.check('hello')
+    expect(Array.from(wordoodle2.usedWord.values())).to.be.eql(['h', 'e', 'l', 'o'])
   })
 })

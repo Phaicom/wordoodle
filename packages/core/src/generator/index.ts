@@ -1,12 +1,14 @@
 import { fiveWords } from '../assets/json'
 import { version } from '../../package.json'
-import type { word } from '../types'
+import type { Result, Word } from '../types'
 
 export class WordoodleGenerator {
   public version = version
-  public words: word[] = []
+  public words: Word[] = []
   public word = ''
   public indicator = 0
+  public result: Result = {} as Result
+  public usedWord = new Set<string>()
 
   constructor(
     public wordSize: number = 5,
@@ -51,8 +53,34 @@ export class WordoodleGenerator {
     return this.word
   }
 
-  check(word: string): boolean {
-    return this.word === word && word.length === this.wordSize
+  check(word: string): Result {
+    const result = { isEqual: false, isError: false, location: { correct: [], incorrect: [] } } as Result
+    try {
+      result.isEqual = this.word === word && word.length === this.wordSize
+
+      const checkWordArr = word.split('')
+      const wordArr = this.word.split('')
+      // check correct location
+      wordArr.forEach((w, i) => {
+        const isEqual = w === checkWordArr[i]
+        if (isEqual)
+          result.location.correct.push(i)
+      })
+      // check correct word but incorrect location
+      checkWordArr.forEach((w, i) => {
+        this.usedWord.add(w)
+        if (result.location.correct.includes(i))
+          return
+
+        if (wordArr.includes(w))
+          result.location.incorrect.push(i)
+      })
+    }
+    catch (error) {
+      result.isError = true
+    }
+    this.result = result
+    return this.result
   }
 }
 
