@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "lib": ["esnext"],
+    "lib": ["DOM", "esnext"],
     "moduleResolution": "node",
     "esModuleInterop": true,
     "strict": true,
@@ -11,11 +11,8 @@
     "skipDefaultLibCheck": true,
     "paths": {
       "wordoodle/vue": ["./packages/vue3/src/index.ts"],
-      "@wordoodle/core": ["./packages/core/src/index.ts"],
+      "@wordoodle/core": ["./packages/core/src/index.ts"]
     }
   },
-  "exclude": [
-    "**/dist/**",
-    "**/node_modules/**"
-  ]
+  "exclude": ["**/dist/**", "**/node_modules/**"]
 }
