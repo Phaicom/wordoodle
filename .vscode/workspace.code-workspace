@@ -5,30 +5,21 @@
 			"name": "root"
 		},
 		{
-			"path": "../packages/logic"
+			"path": "../packages/core"
 		},
 		{
-			"path": "../packages/vue"
+			"path": "../packages/vue3"
 		},
 	],
 	"settings": {
 		"prettier.enable": false,
 		"typescript.tsdk": "node_modules/typescript/lib",
 		"editor.codeActionsOnSave": {
-		  "source.fixAll.eslint": true,
-		},
-		"files.associations": {
-		  "*.css": "postcss",
+			"source.fixAll.eslint": true,
 		},
 		"css.validate": false,
-		"vite.devCommand": "nr docs",
 		"vite.open": false,
 		"editor.tabSize": 2,
 		"windicss.sortOnSave": true,
-		"i18n-ally.localesPaths": [
-			"packages/web-search/locales"
-		],
-		"i18n-ally.keystyle": "nested",
-		"i18n-ally.sortKeys": true,
 	}
 }

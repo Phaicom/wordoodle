@@ -2,7 +2,7 @@ export interface Word {
   word: string
 }
 
-export interface Result{
+export interface Result {
   isEqual: boolean
   isError: boolean
   location: {

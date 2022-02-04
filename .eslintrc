@@ -1,9 +1,14 @@
 {
   "env": {
-    "node": true,
+    "node": true
   },
   "extends": "@antfu",
   "rules": {
-    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_"
+      }
+    ]
   }
 }
