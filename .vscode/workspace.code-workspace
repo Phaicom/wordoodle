@@ -1,0 +1,34 @@
+{
+	"folders": [
+		{
+			"path": "..",
+			"name": "root"
+		},
+		{
+			"path": "../packages/logic"
+		},
+		{
+			"path": "../packages/vue"
+		},
+	],
+	"settings": {
+		"prettier.enable": false,
+		"typescript.tsdk": "node_modules/typescript/lib",
+		"editor.codeActionsOnSave": {
+		  "source.fixAll.eslint": true,
+		},
+		"files.associations": {
+		  "*.css": "postcss",
+		},
+		"css.validate": false,
+		"vite.devCommand": "nr docs",
+		"vite.open": false,
+		"editor.tabSize": 2,
+		"windicss.sortOnSave": true,
+		"i18n-ally.localesPaths": [
+			"packages/web-search/locales"
+		],
+		"i18n-ally.keystyle": "nested",
+		"i18n-ally.sortKeys": true,
+	}
+}

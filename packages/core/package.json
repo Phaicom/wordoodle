@@ -1,0 +1,21 @@
+{
+  "name": "@wordoodle/core",
+  "version": "0.0.1",
+  "description": "Wordoodle core logic.",
+  "license": "MIT",
+  "author": "Reawpai Chunsoi (reawpai.chun@yahoo.com)",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "scripts": {
+    "build": "unbuild",
+    "stub": "unbuild --stub"
+  },
+  "types": "dist/index.d.ts"
+}

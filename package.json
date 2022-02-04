@@ -1,0 +1,48 @@
+{
+  "name": "wordoodle",
+  "version": "0.0.1",
+  "description": "Wordle game in various language",
+  "main": "index.js",
+  "scripts": {
+    "build": "pnpm -r --filter ./packages run build",
+    "lint": "eslint \"**/*.{ts,vue,mjs}\"",
+    "lint:fix": "nr lint -- --fix",
+    "lint:lint-staged": "lint-staged -c ./.husky/lintstagedrc.js",
+    "test": "vitest test",
+    "test:update": "vitest -u",
+    "clean:cache": "rimraf node_modules/.cache/ && rimraf node_modules/.vite && rimraf packages/**/node_modules/.cache/ && rimraf packages/**/node_modules/.vite",
+    "clean:lib": "rimraf node_modules && rimraf packages/**/node_modules",
+    "prepare": "husky install",
+    "preinstall": "npx only-allow pnpm"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Phaicom/wordoodle.git"
+  },
+  "author": "Reawpai Chunsoi (reawpai.chun@yahoo.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Phaicom/wordoodle/issues"
+  },
+  "homepage": "https://github.com/Phaicom/wordoodle#readme",
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.16.1",
+    "@antfu/ni": "^0.12.0",
+    "@commitlint/cli": "^16.1.0",
+    "@commitlint/config-conventional": "^16.0.0",
+    "@types/node": "^17.0.14",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.8.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.3",
+    "pnpm": "^6.29.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.5.5",
+    "unbuild": "^0.6.9",
+    "vite": "^2.7.13",
+    "vitest": "^0.2.7"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

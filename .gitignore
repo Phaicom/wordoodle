@@ -1,0 +1,14 @@
+.DS_Store
+*.local
+dist
+dist-ssr
+node_modules
+# intellij stuff
+.idea/
+*.pdf
+*-export
+assets/demo
+packages/slidev/README.md
+packages/create-app/template/slides.md
+composable-vue-cn
+components.d.ts
