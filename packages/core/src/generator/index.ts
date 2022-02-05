@@ -1,6 +1,7 @@
 import { fiveWords } from '../assets/json'
 import { version } from '../../package.json'
-import type { Result, Word } from '../types'
+import { KeyTypeEnum } from '../types'
+import type { KeyList, Result, Word } from '../types'
 
 export class WordoodleGenerator {
   public version = version
@@ -8,7 +9,7 @@ export class WordoodleGenerator {
   public word = ''
   public indicator = 0
   public result: Result = {} as Result
-  public usedWord = new Set<string>()
+  public keyList: KeyList[] = []
 
   constructor(
     public wordSize: number = 5,
@@ -16,6 +17,10 @@ export class WordoodleGenerator {
     this.setWordSize(wordSize)
     this.indicator = 0
     this.word = this.words[0].word
+    const alpha = Array.from(Array(26)).map((e, i) => i + 97)
+    alpha.map(x => String.fromCharCode(x)).forEach((a) => {
+      this.keyList.push({ word: a, type: KeyTypeEnum.DEFAULT } as KeyList)
+    })
   }
 
   setWordSize(wordSize: number) {
@@ -54,7 +59,7 @@ export class WordoodleGenerator {
   }
 
   check(word: string): Result {
-    const result = { isEqual: false, isError: false, location: { correct: [], incorrect: [] } } as Result
+    const result = { isEqual: false, isError: false, location: { correct: [], wrongLocation: [] } } as Result
     try {
       result.isEqual = this.word === word && word.length === this.wordSize
 
@@ -63,17 +68,26 @@ export class WordoodleGenerator {
       // check correct location
       wordArr.forEach((w, i) => {
         const isEqual = w === checkWordArr[i]
-        if (isEqual)
+        if (isEqual) {
+          const idx = this.keyList.findIndex(k => k.word === w)
+          this.keyList[idx].type = KeyTypeEnum.CORRECT
           result.location.correct.push(i)
+        }
       })
-      // check correct word but incorrect location
+      // check correct word but wrong location
       checkWordArr.forEach((w, i) => {
-        this.usedWord.add(w)
+        const idx = this.keyList.findIndex(k => k.word === w)
+
         if (result.location.correct.includes(i))
           return
 
-        if (wordArr.includes(w))
-          result.location.incorrect.push(i)
+        if (wordArr.includes(w)) {
+          this.keyList[idx].type = KeyTypeEnum.WRONG_LOCATION
+          result.location.wrongLocation.push(i)
+          return
+        }
+
+        this.keyList[idx].type = KeyTypeEnum.INCORRECT
       })
     }
     catch (error) {
@@ -81,6 +95,10 @@ export class WordoodleGenerator {
     }
     this.result = result
     return this.result
+  }
+
+  checkIsCorrectWord(word: string): boolean {
+    return this.words.filter(w => w.word === word).length > 0
   }
 }
 
