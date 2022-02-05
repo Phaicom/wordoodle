@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import { useWordoodleStore } from '@/store/wordoodle'
 import { useWordoodle } from '@/hooks/useWordoodle'
 
-const { check, deleteWord, addWord, isReadyForCheck } = useWordoodle()
+const { check, deleteWord, addWord } = useWordoodleStore()
+const { isReadyForCheck } = useWordoodle()
 const keys = [['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'], ['', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ''], ['enter', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'del']]
 
 const onClickKey = (key: string) => {
