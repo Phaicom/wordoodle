@@ -49,7 +49,7 @@
     "node": ">=16.0.0"
   },
   "dependencies": {
-    "@wordoodle/core": "workspace:^0.0.1",
+    "@wordoodle/core": "workspace:^0.0.2",
     "daisyui": "^1.25.4"
   }
 }

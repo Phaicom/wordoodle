@@ -8,7 +8,7 @@ const { indicator } = useWordoodle()
 const getTileClass = (i: number, j: number) => {
   if (resultSet[i]?.location.correct.includes(j))
     return 'border-success bg-success'
-  if (resultSet[i]?.location.incorrect.includes(j))
+  if (resultSet[i]?.location.wrongLocation.includes(j))
     return 'border-warning bg-warning'
 
   if (i < indicator.value)
