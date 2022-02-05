@@ -1,0 +1,37 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "lib": [
+      "DOM",
+      "esnext"
+    ],
+    "sourceMap": true,
+    "useDefineForClassFields": true,
+    "jsx": "preserve",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+    },
+    "typeRoots": [
+      "./node_modules/@types/",
+    ],
+    "types": [
+      "vite/client",
+    ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.vue",
+    "vite.config.ts",
+    "components.d.ts"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "public",
+    "tests"
+  ]
+}
