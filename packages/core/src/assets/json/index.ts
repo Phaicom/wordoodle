@@ -1,1 +1,1 @@
-export { default as fiveWords } from './5words'
+export { default as fiveWords } from './fivewords'

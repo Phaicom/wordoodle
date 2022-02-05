@@ -5,7 +5,7 @@ describe('wordoodle generator', () => {
   const wordoodle = createWordoodleGenerator()
 
   it('can create generator', () => {
-    expect(wordoodle.words.length).eql(9330)
+    expect(wordoodle.words.length).eql(6083)
     expect(wordoodle.wordSize).eql(5)
   })
 
@@ -13,7 +13,7 @@ describe('wordoodle generator', () => {
     const temp = wordoodle.words[0]
     wordoodle.shuffle()
     expect(wordoodle.words[0].word).to.not.eql(temp.word)
-    expect(wordoodle.words.length).eql(9330)
+    expect(wordoodle.words.length).eql(6083)
   })
 
   it('can next word', () => {
