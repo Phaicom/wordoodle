@@ -17,6 +17,10 @@ export class WordoodleGenerator {
     this.setWordSize(wordSize)
     this.indicator = 0
     this.word = this.words[0].word
+    this.setKeyList()
+  }
+
+  setKeyList() {
     const alpha = Array.from(Array(26)).map((e, i) => i + 97)
     alpha.map(x => String.fromCharCode(x)).forEach((a) => {
       this.keyList.push({ word: a, type: KeyTypeEnum.DEFAULT } as KeyList)
@@ -55,6 +59,8 @@ export class WordoodleGenerator {
       this.shuffle()
 
     this.word = this.words[this.indicator += 1].word
+    this.result = {} as Result
+    this.setKeyList()
     return this.word
   }
 
