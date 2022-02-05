@@ -1,12 +1,13 @@
 <script setup lang="ts">
-
+import TheHeader from '@/components/TheHeader.vue'
+import TheBoard from '@/components/TheBoard.vue'
+import TheKeyboards from '@/components/TheKeyboards.vue'
 </script>
 
 <template>
-  <h1 class="font-bold text-3xl underline">
-    Hello world!
-  </h1>
-  <button class="btn btn-primary">
-    daisyUI Button
-  </button>
+  <div class="max-w-lg mx-auto flex flex-col h-screen">
+    <the-header />
+    <the-board />
+    <the-keyboards />
+  </div>
 </template>
