@@ -8,7 +8,9 @@ export const useWordoodle = () => {
 
   wordoodleStore.$subscribe((_, state) => {
     indicator.value = state.indicator
-    isReadyForCheck.value = state.keysInput[state.indicator].length === 5
+
+    if (state.indicator < 6)
+      isReadyForCheck.value = state.keysInput[state.indicator].length === 5
   })
 
   return {
